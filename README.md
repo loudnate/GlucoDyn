@@ -1,20 +1,60 @@
 # GlucoDyn
-GlucoDyn was created to educate T1D's and their caregivers about blood sugar dynamics
+GlucoDyn was created to educate T1D's and their caregivers about blood sugar dynamics.
 
-Each day T1D's make decisions about what and when to eat, and how much insulin to use to cover carbohydrates effect. It can be difficult to visualize what is happening throughout the day as carb absorption raises blood sugar and insulin reduces it – particularly when multiple events interact with one another.
+For more information, please visit the original repo at [Perceptus/GlucoDyn](https://github.com/Perceptus/GlucoDyn)
 
-GlucoDyn uses calculations similar to an insulin pump’s bolus wizard ( see the Background section for details on the calculations ) to create graphs of blood sugar versus time, based on your inputs of carb and insulin events.
+## Reporter fork
+This is an automated, display-only version of GlucoDyn, preserving its algorithm and chart display implementations but removing the manual input logic.
 
-The user can enter carb events, boluses, and temp basals, and GlucoDyn calculates the effect on blood sugar over time.
+The remaining Javascript interface is currently as follows:
 
-Seeing the curves and understanding the effects of bolus timing, carbohydrate absorption rate GI value, temp basal timing and rates, etc. will help users with their overall understanding of Type 1 diabetes and its management.
+```javascript
+// Set settings
+localStorage["userdata"] = JSON.stringify({
+	cratio: userdata.cratio,  // g/U
+	sensf: userdata.sensf,  // (mg/dL)/U
+	idur: userdata.idur,  // hours
+	bginitial: userdata.bginitial,  // mg/dL
+	stats: userdata.stats,  // 1 or 0
+	simlength: userdata.simlength,  // hours
+	inputeffect: userdata.inputeffect  // 1 or 0
+})
 
-GlucoDyn also allows the user to “slide” the events around once they have been entered – allowing you to see what would have happened to your blood sugar curve if you had bloused earlier or eaten a different amount of carbs “on the fly” – the curves change as you move the sliders.
+// Add temp basal
+uevent[uevent.length] = {
+	etype: "tempbasal",
+	id: uevent_counter++,
+	time: 0
+	t1: 0,
+	t2: 90,
+	dbdt: 1,
+}
+addEventHistory()
 
-For a detailed tutorial, head over to<br/>
-http://perceptus.org/about/glucodyn
+// Add bolus
+uevent[uevent.length] = {
+	id: uevent_counter++,
+	etype: "bolus",
+	time: 0,
+	units: 3.2
+}
+addEventHistory()
 
-# The MIT License (MIT)
+// Add carb
+uevent[uevent.length] = {
+	id: uevent_counter++,
+	etype: "carb",
+	time: 0,
+	grams: 17
+}
+addEventHistory()
+
+// Reload graph data
+reloadGraphData()
+```
+
+# License
+### The MIT License (MIT)
 
 		The MIT License (MIT)
 
