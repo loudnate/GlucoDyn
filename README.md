@@ -10,7 +10,7 @@ The remaining Javascript interface is currently as follows:
 
 ```javascript
 // Set settings
-localStorage["userdata"] = JSON.stringify({
+userdata = {
 	cratio: userdata.cratio,  // g/U
 	sensf: userdata.sensf,  // (mg/dL)/U
 	idur: userdata.idur,  // hours
@@ -18,7 +18,8 @@ localStorage["userdata"] = JSON.stringify({
 	stats: userdata.stats,  // 1 or 0
 	simlength: userdata.simlength,  // hours
 	inputeffect: userdata.inputeffect  // 1 or 0
-})
+}
+reloadGraphData();
 
 // Add temp basal
 uevent[uevent.length] = {

@@ -164,12 +164,7 @@ function GlucodynStats(bg) {
 } 
   
 //user parameters - carb ratio, sensitivity factor, insulin duration      
-if ( localStorage["userdata"] ) {
-  var userdata = JSON.parse(localStorage["userdata"]);
-} else {
-  localStorage["userdata"] = JSON.stringify({cratio:0,sensf:0.0,idur:1,bginitial:0,stats:0,simlength:1,inputeffect:1});
-  var userdata = JSON.parse(localStorage["userdata"]);
-}
+var userdata = {cratio:0,sensf:0.0,idur:1,bginitial:0,stats:0,simlength:1,inputeffect:1};
 
 var uevent = [];
 var uevent_counter = 0;
@@ -196,8 +191,6 @@ function RecommendedMaxSimTime(set_trigger) {
   
   if ( uevent.length > 0 && simtimeadjustrecommendation == 1 ) {
     
-    var userdata = JSON.parse(localStorage["userdata"]);
-      
     var maxsimtime=0;
     for (var ii=0;ii<uevent.length;ii++) {
       var etime=0;
@@ -207,38 +200,15 @@ function RecommendedMaxSimTime(set_trigger) {
       if(uevent[ii].etype=="tempbasal") {etime=uevent[ii].t2+userdata.idur*60;}
       if (etime>maxsimtime) {maxsimtime=etime;}    
     }
-          
-    if ( maxsimtime > userdata.simlength*60 ) {
-
-      $("#simtime_adjust_container").removeClass("hidden");
-      $("#simtime_recommend_label").text((Math.ceil(maxsimtime/60))*60);          
-              
-    } else if ( Math.ceil(maxsimtime/60) < userdata.simlength ) {
-    
-      $("#simtime_adjust_container").removeClass("hidden");
-      $("#simtime_recommend_label").text((Math.ceil(maxsimtime/60))*60);          
-    
-    } else {
-
-      $("#simtime_adjust_container").addClass("hidden");
-    
-    }
   
     if ( set_trigger == 1 ) {
     
       userdata.simlength = Math.ceil(maxsimtime/60);
-    
-      localStorage["userdata"] = JSON.stringify({cratio:userdata.cratio,sensf:userdata.sensf,idur:userdata.idur,bginitial:userdata.bginitial,stats:userdata.stats,simlength:userdata.simlength,inputeffect:userdata.inputeffect});
     
       reloadSliders();
       reloadGraphData();          
       
     }
     
-  } else {
-    
-    $("#simtime_adjust_container").addClass("hidden");
-    
   }
-
 }

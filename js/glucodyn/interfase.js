@@ -1,8 +1,6 @@
 // Function to load the Graph everytime any setting is changed
 function reloadGraphData() {
 
-  var userdata = JSON.parse(localStorage["userdata"]);
-
   var simt = userdata.simlength*60;
   var dt=simt/n;
 
@@ -346,8 +344,6 @@ function removeEvent(event_id) {
 
 // Sliders Reload
 function reloadSliders() {
-  var userdata = JSON.parse(localStorage["userdata"]);
-
   for (i=0;i<(uevent.length);i++) {
     $("#history_time_slider_" + uevent[i].id).slider("option","max",userdata.simlength*60);
   }
