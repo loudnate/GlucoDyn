@@ -24,7 +24,6 @@ reloadGraphData();
 // Add temp basal
 uevent[uevent.length] = {
 	etype: "tempbasal",
-	id: uevent_counter++,
 	time: 0
 	t1: 0,
 	t2: 90,
@@ -34,7 +33,6 @@ addEventHistory()
 
 // Add bolus
 uevent[uevent.length] = {
-	id: uevent_counter++,
 	etype: "bolus",
 	time: 0,
 	units: 3.2
@@ -43,9 +41,9 @@ addEventHistory()
 
 // Add carb
 uevent[uevent.length] = {
-	id: uevent_counter++,
 	etype: "carb",
 	time: 0,
+	ctype: 180,
 	grams: 17
 }
 addEventHistory()
