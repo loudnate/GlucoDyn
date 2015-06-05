@@ -263,15 +263,7 @@ function addEventHistory() {
     description_b = "From min "+ event.t1 +" to min "+ event.t2 +""
   }
 
-  if(event.etype == "carb" || event.etype == "bolus") {
-
-    $("#input_history").append("<div class='row' class='history_row' id='uevent_" + event_id +"'><div class='col-xs-6'>" + description + "</div><div class='col-xs-6'>" + description_b + "</div></div>");
-
-  } else {
-
-    $("#input_history").append("<div id='uevent_" + event_id +"'>" + description + "</div>");
-
-  }
+  $("#input_history").append("<div class='row' id='uevent_" + event_id +"'><div class='col-xs-6'>" + description + "</div><div class='col-xs-6'>" + description_b + "</div></div>");
 
   $("#input_history_container").removeClass("hidden");
 
