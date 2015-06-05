@@ -266,33 +266,15 @@ function addEventHistory() {
 
   if(event.etype == "carb" || event.etype == "bolus") {
 
-    $("#input_history").append("<div class='row' class='history_row' id='uevent_" + event_id +"'><div class='col-xs-12'><div class='row'><div class='col-xs-6'>" + description + "</div><div class='col-xs-6'><div class='col-xs-10'>" + description_b + "</div><div class='col-xs-2'><a id='' href='#new_event_link' class='' onclick='removeEvent("+ event_id +");'><span class='fui-trash'></span></a></div></div></div><div class='row'><div class='col-xs-6'><div id='history_amount_slider_" + event_id +"' class='ui-slider'></div></div><div class='col-xs-6'><div id='history_time_slider_" + event_id +"' class='ui-slider'></div></div></div></div></div>");
+    $("#input_history").append("<div class='row' class='history_row' id='uevent_" + event_id +"'><div class='col-xs-6'>" + description + "</div><div class='col-xs-6'>" + description_b + "</div></div>");
 
   } else {
 
-    $("#input_history").append("<div class='row' id='uevent_" + event_id +"'><div class='col-xs-10'>" + description + "</div><div class='col-xs-2'><a id='' href='#new_event_link' class='' onclick='removeEvent("+ event_id +");'><span class='fui-trash'></span></a></div></div>");
+    $("#input_history").append("<div id='uevent_" + event_id +"'>" + description + "</div>");
 
   }
 
   $("#input_history_container").removeClass("hidden");
-
-}
-
-function removeEvent(event_id) {
-
-  $("#uevent_" + event_id).remove();
-
-  for (i=0;i<(uevent.length);i++) {
-    if ( uevent[i].id == event_id ) {
-      uevent.splice(i,1);
-    }
-  }
-
-  reloadGraphData();
-
-  if ( uevent.length == 0 ) {
-    $("#input_history_container").addClass("hidden");
-  }
 
 }
 
