@@ -52,7 +52,7 @@ function reloadGraphData() {
 
    var predata = new google.visualization.DataTable();
    predata.addColumn('number', 'Time'); // Implicit domain label col.
-   predata.addColumn('number', 'Resulting Blood Sugar mg/dl'); // Implicit series 1 data col.
+   predata.addColumn('number', 'Resulting Blood Sugar mg/dL'); // Implicit series 1 data col.
 
    if ( userdata.stats == 1 ) {
 
@@ -61,14 +61,14 @@ function reloadGraphData() {
 
      if ( userdata.inputeffect == 1 ) {
 
-       predata.addColumn('number', 'Carb effect on Blood Sugar mg/dl'); // Implicit series 1 data col.
-       predata.addColumn('number', 'Insulin effect on Blood Sugar mg/dl'); // Implicit series 1 data col.
+       predata.addColumn('number', 'Carb effect on Blood Sugar mg/dL'); // Implicit series 1 data col.
+       predata.addColumn('number', 'Insulin effect on Blood Sugar mg/dL'); // Implicit series 1 data col.
 
      }
 
-     predata.addColumn('number', 'Average mg/dl');
-     predata.addColumn('number', 'Min mg/dl');
-     predata.addColumn('number', 'Max mg/dl');
+     predata.addColumn('number', 'Average mg/dL');
+     predata.addColumn('number', 'Min mg/dL');
+     predata.addColumn('number', 'Max mg/dL');
 
      for (i=0;i<n;i++) {
        simbg[i]=userdata.bginitial+simbgc[i]+simbgi[i];
@@ -97,7 +97,7 @@ function reloadGraphData() {
            baselineColor: 'none'
          },
          vAxis: {
-           title: 'BG mg/dl',
+           title: 'BG mg/dL',
            baselineColor: 'none'
          },
          legend: {
@@ -130,7 +130,7 @@ function reloadGraphData() {
            baselineColor: 'none'
          },
          vAxis: {
-           title: 'BG mg/dl',
+           title: 'BG mg/dL',
            baselineColor: 'none'
          },
          legend: {
@@ -161,8 +161,8 @@ function reloadGraphData() {
 
      if ( userdata.inputeffect == 1 ) {
 
-       predata.addColumn('number', 'Carb effect on Blood Sugar mg/dl'); // Implicit series 1 data col.
-       predata.addColumn('number', 'Insulin effect on Blood Sugar mg/dl'); // Implicit series 1 data col.
+       predata.addColumn('number', 'Carb effect on Blood Sugar mg/dL'); // Implicit series 1 data col.
+       predata.addColumn('number', 'Insulin effect on Blood Sugar mg/dL'); // Implicit series 1 data col.
 
      }
 
@@ -190,7 +190,7 @@ function reloadGraphData() {
            baselineColor: 'none'
          },
          vAxis: {
-           title: 'BG mg/dl',
+           title: 'BG mg/dL',
            baselineColor: 'none'
          },
          legend: {
@@ -220,7 +220,7 @@ function reloadGraphData() {
            baselineColor: 'none'
          },
          vAxis: {
-           title: 'BG mg/dl',
+           title: 'BG mg/dL',
            baselineColor: 'none'
          },
          legend: {
