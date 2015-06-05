@@ -49,8 +49,14 @@ function reloadGraphData() {
 
    RecommendedMaxSimTime(0);
 
+   var hAxisTitle = 'Time (min)';
+   
+   if (userdata.pump_time_string) {
+       hAxisTitle += ' from ' + userdata.pump_time_string;
+   }
+
    var predata = new google.visualization.DataTable();
-   predata.addColumn('number', 'Time'); // Implicit domain label col.
+   predata.addColumn('number', hAxisTitle); // Implicit domain label col.
    predata.addColumn('number', 'Resulting Blood Sugar mg/dL'); // Implicit series 1 data col.
 
    if ( userdata.stats == 1 ) {
@@ -92,7 +98,7 @@ function reloadGraphData() {
          curveType: 'function',
          legend: { position: 'bottom' },
          hAxis: {
-           title: 'Time (min)',
+           title: hAxisTitle,
            baselineColor: 'none'
          },
          vAxis: {
@@ -125,7 +131,7 @@ function reloadGraphData() {
          curveType: 'function',
          legend: { position: 'bottom' },
          hAxis: {
-           title: 'Time (min)',
+           title: hAxisTitle,
            baselineColor: 'none'
          },
          vAxis: {
@@ -185,7 +191,7 @@ function reloadGraphData() {
          curveType: 'function',
          legend: { position: 'bottom' },
          hAxis: {
-           title: 'Time (min)',
+           title: hAxisTitle,
            baselineColor: 'none'
          },
          vAxis: {
@@ -202,8 +208,7 @@ function reloadGraphData() {
           1: { color: '#1abc9c', lineDashStyle: [4,4] },
           2: { color: '#e74c3c', lineDashStyle: [4,4] },
          },
-         chartArea: {'width': '90%', 'height': '80%'},
-         legend: {'position': 'top'}
+         chartArea: {'width': '90%', 'height': '80%'}
        };
 
      } else {
@@ -215,7 +220,7 @@ function reloadGraphData() {
          curveType: 'function',
          legend: { position: 'bottom' },
          hAxis: {
-           title: 'Time (min)',
+           title: hAxisTitle,
            baselineColor: 'none'
          },
          vAxis: {
@@ -230,8 +235,7 @@ function reloadGraphData() {
          series: {
           0: { color: '#666666' },
          },
-         chartArea: {'width': '90%', 'height': '80%'},
-         legend: {'position': 'top'}
+         chartArea: {'width': '90%', 'height': '80%'}
        };
 
      }
